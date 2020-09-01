@@ -114,9 +114,5 @@ public class Receta {
 		this.descripcion = descripcion;
 	}
 
-	public String colorRed() {
-		// TODO Auto-generated method stub
-		return "border-bottom: 10px solid red;"
-				+ "border-top: 10px solid red;";
-	}
+	
 }

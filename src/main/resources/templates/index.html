@@ -83,7 +83,7 @@
 		<div class="ed-grid s-grid-1 m-grid-2 lg-grid-3 xl-grid-4">
 			<article class="s-shadow-bottom" th:each="receta : ${listaRecetas}"  >
 				<!--Contenedor de la imagen-->
-				<div class="s-ratio-16-9 img-container s-radius-tl s-radius-tr" th:style="${receta.colorRed()}">
+				<div class="s-ratio-16-9 img-container s-radius-tl s-radius-tr" >
 					<img th:src="${receta.urlImg}"
 						src="https://ed.team/static/images/utils/og-image.jpg">
 				</div>
