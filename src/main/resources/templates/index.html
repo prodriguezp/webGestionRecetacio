@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+
+
+<!-- <!--Bootstrapt-->
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+	crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+	integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+	integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+	crossorigin="anonymous"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+	integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+	crossorigin="anonymous"></script>
+
+<!-- CSS Proyect Visual -->
+<link href="#" th:href="@{/css/visual-info.css}" rel="stylesheet" />
+<link
+	href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap"
+	rel="stylesheet">
+
+<!-- EdGrid -->
+<link href="https://unpkg.com/ed-grid@3.0.0/src/css/ed-grid.min.css"
+	rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<a class="navbar-brand" href="#"> <img
+				src="https://image.flaticon.com/icons/png/512/1021/1021460.png" width="30"
+				height="30" class="d-inline-block align-top" alt="">   Inicio
+			</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item"><a class="nav-link" href="#"
+						th:href="@{/formularioReceta}">Nuevo <span class="sr-only">(current)</span>
+					</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+						role="button" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false"> Dropdown </a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="#">Action</a> <a
+								class="dropdown-item" href="#">Another action</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="#">Something else here</a>
+						</div></li>
+					<li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a>
+					</li>
+				</ul>
+				<form class="form-inline my-2 my-lg-0">
+					<input class="form-control mr-sm-2" type="search"
+						placeholder="Search" aria-label="Search">
+					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+				</form>
+			</div>
+		</nav>
+
+		<div class="info s-radius-tl s-radius-tr">
+			<h1>Recetario</h1>
+		</div>
+
+
+		<div class="ed-grid s-grid-1 m-grid-2 lg-grid-3 xl-grid-4">
+			<article class="s-shadow-bottom" th:each="receta : ${listaRecetas}"  >
+				<!--Contenedor de la imagen-->
+				<div class="s-ratio-16-9 img-container s-radius-tl s-radius-tr" th:style="${receta.colorRed()}">
+					<img th:src="${receta.urlImg}"
+						src="https://ed.team/static/images/utils/og-image.jpg">
+				</div>
+				<!--Contenido-->
+				<div class="s-bg-white s-pxy-2">
+					<h3 th:text="${receta.nombre}">Curso Bases de Datos Desde Cero</h3>
+					<p th:text="${receta.descripcion}" class="s-mb-0">Diseña,
+						estructura y administra bases de datos SQL y crea un sistema de
+						facturación</p>
+				</div>
+				<footer
+					class="s-cross-center s-bg-grey s-pxy-2 s-radius-br s-radius-bl">
+					<!--Define el ancho máximo de la imagen-->
+					<div class="s-10 s-mr-1">
+						<!--Contenedor de la imagen-->
+						<div class="circle ">
+							<img src="https://image.flaticon.com/icons/svg/709/709511.svg">
+						</div>
+						<!--Profesor-->
+					</div>
+					<p class="s-mb-0" th:text="${receta.tiempoPreparacion}+' min.'">Prof.
+						Alexys Lozada</p>
+					<!--Boton-->
+					<a th:href="@{/formularioReceta/(id=${receta.id})}"
+						class="button s-to-right">
+						<div>Editar</div>
+					</a>
+				</footer>
+			</article>
+
+		</div>
+
+
+
+
+	</div>
+</body>
+</html>
