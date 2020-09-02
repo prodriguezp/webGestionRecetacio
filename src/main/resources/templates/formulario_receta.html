@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
 
 <!-- <!--Bootstrapt-->
 
@@ -35,7 +36,6 @@
 </head>
 <body>
 	<div class="container">
-
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<a class="navbar-brand" href="#" th:href="@{/}"> <img
 				src="https://image.flaticon.com/icons/png/512/1021/1021460.png"
@@ -77,9 +77,11 @@
 				</form>
 			</div>
 		</nav>
+
 		<div class="info">
-			<h1>Formularios de recetas</h1>
+			<h1>Formulario</h1>
 		</div>
+
 		<div>
 			<form th:object="${receta}" action="#" th:action="@{/guardarReceta}"
 				method="post">
@@ -103,7 +105,7 @@
 					<div class="form-group col-md-6">
 						<label>Raciones</label> <input th:field="*{raciones}"
 							th:value="${raciones}" type="number" class="form-control">
-						<small class="form-text text-muted">Número de personas
+						<small class="form-text text-muted">NÃºmero de personas
 							recomendado para esta receta</small>
 					</div>
 					<div class="form-group col-md-6">
@@ -137,7 +139,11 @@
 				<button type="submit" class="btn btn-primary">Ingredientes</button>
 			</form>
 		</div>
-	</div>
 
+
+
+
+
+	</div>
 </body>
 </html>
