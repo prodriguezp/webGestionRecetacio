@@ -3,7 +3,9 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<!--Bootstrapt-->
+
+<!-- <!--Bootstrapt-->
+
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
@@ -20,9 +22,9 @@
 	integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
 	crossorigin="anonymous"></script>
 
-
 <!-- CSS Proyect Visual -->
 <link href="#" th:href="@{/css/visual-info.css}" rel="stylesheet" />
+<link href="#" th:href="@{/css/visual-scroll.css}" rel="stylesheet" />
 <link
 	href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap"
 	rel="stylesheet">
@@ -52,7 +54,8 @@
 					<li class="nav-item"><a class="nav-link" href="#"
 						th:href="@{/formularioReceta}">Nuevo <span class="sr-only">(current)</span>
 					</a></li>
-					<li class="nav-item disabled"><a class="nav-link" href="#"> ... </a></li>
+					<li class="nav-item disabled"><a class="nav-link" href="#">
+							... </a></li>
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 						role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -63,11 +66,12 @@
 							<div class="dropdown-divider"></div>
 							<a class="dropdown-item" href="#">Something else here</a>
 						</div></li>
-					<li class="nav-item"><a class="nav-link " href="#"> ... </a>
-					</li>
+					<li class="nav-item"><a class="nav-link " href="#"> ... </a></li>
 				</ul>
-				<form class="form-inline my-2 my-lg-0" method="post" th:action="@{/nombre}" th:object="${busqueda}">
-					<input class="form-control mr-sm-2" type="search" th:field="*{recetaName}" th:value="${recetaName}"
+				<form class="form-inline my-2 my-lg-0" method="post"
+					th:action="@{/nombre}" th:object="${busqueda}">
+					<input class="form-control mr-sm-2" type="search"
+						th:field="*{recetaName}" th:value="${recetaName}"
 						placeholder="Search" aria-label="Search">
 					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 				</form>
