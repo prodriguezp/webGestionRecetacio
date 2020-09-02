@@ -26,6 +26,7 @@
 
 <!-- CSS Proyect Visual -->
 <link href="#" th:href="@{/css/visual-info.css}" rel="stylesheet" />
+<link href="#" th:href="@{/css/visual-scroll.css}" rel="stylesheet" />
 <link
 	href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap"
 	rel="stylesheet">
@@ -37,9 +38,10 @@
 <body>
 	<div class="container">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<a class="navbar-brand" href="#"> <img
-				src="https://image.flaticon.com/icons/png/512/1021/1021460.png" width="30"
-				height="30" class="d-inline-block align-top" alt="">   Inicio
+			<a class="navbar-brand" href="#" th:href="@{/}"> <img
+				src="https://image.flaticon.com/icons/png/512/1021/1021460.png"
+				width="30" height="30" class="d-inline-block align-top" alt="">
+				Inicio
 			</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarSupportedContent"
@@ -53,22 +55,22 @@
 					<li class="nav-item"><a class="nav-link" href="#"
 						th:href="@{/formularioReceta}">Nuevo <span class="sr-only">(current)</span>
 					</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+					<li class="nav-item disabled"><a class="nav-link" href="#"> ... </a></li>
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 						role="button" data-toggle="dropdown" aria-haspopup="true"
-						aria-expanded="false"> Dropdown </a>
+						aria-expanded="false"> ... </a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 							<a class="dropdown-item" href="#">Action</a> <a
 								class="dropdown-item" href="#">Another action</a>
 							<div class="dropdown-divider"></div>
 							<a class="dropdown-item" href="#">Something else here</a>
 						</div></li>
-					<li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a>
+					<li class="nav-item"><a class="nav-link " href="#"> ... </a>
 					</li>
 				</ul>
-				<form class="form-inline my-2 my-lg-0">
-					<input class="form-control mr-sm-2" type="search"
+				<form class="form-inline my-2 my-lg-0" method="post" th:action="@{/nombre}" th:object="${busqueda}">
+					<input class="form-control mr-sm-2" type="search" th:field="*{recetaName}" th:value="${recetaName}"
 						placeholder="Search" aria-label="Search">
 					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 				</form>
@@ -89,8 +91,8 @@
 				</div>
 				<!--Contenido-->
 				<div class="s-bg-white s-pxy-2">
-					<h3 th:text="${receta.nombre}">Curso Bases de Datos Desde Cero</h3>
-					<p th:text="${receta.descripcion}" class="s-mb-0">Diseña,
+					<h3 th:text="${receta.nombre}" class="titlecard">Curso Bases de Datos Desde Cero</h3>
+					<p th:text="${receta.descripcion}" class="s-mb-0 infocard">Diseña,
 						estructura y administra bases de datos SQL y crea un sistema de
 						facturación</p>
 				</div>

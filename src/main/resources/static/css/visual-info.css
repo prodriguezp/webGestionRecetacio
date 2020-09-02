@@ -24,11 +24,24 @@
 .container, .flex-container {
 	-webkit-box-shadow: 8px 0px 22px -1px rgba(0, 0, 0, 0.75);
 	-moz-box-shadow: 8px 0px 22px -1px rgba(0, 0, 0, 0.75);
-	box-shadow: 8px 0px 22px -1px rgba(0, 0, 0, 0.75);	
-	background: #f8f9fa!important;
+	box-shadow: 8px 0px 22px -1px rgba(0, 0, 0, 0.75);
+	background: #f8f9fa !important;
 }
 
 body {
 	background-image: url('vector.png');
 	background-size: 100% 100%;
+}
+
+.infocard {
+	height: 150px;
+	overflow-y: scroll;
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+}
+.infocard::-webkit-scrollbar {
+	  display: none;	
+}
+.titlecard{
+	height: 60px;
 }
