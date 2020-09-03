@@ -39,6 +39,7 @@ public class MainController {
 		ModelAndView mav = new ModelAndView("index");
 		mav.addObject("listaRecetas", recetaRepo.findAllByNombre(busqueda.getRecetaName()));
 		mav.addObject("busqueda", new RecetaBusqueda());
+		mav.addObject("nombreBusqueda", busqueda.getRecetaName());
 		return mav;
 	}
 	@GetMapping("/formularioReceta")

@@ -23,6 +23,12 @@
 	integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
 	crossorigin="anonymous"></script>
 
+
+<!-- EdGrid -->
+<link href="https://unpkg.com/ed-grid@3.0.0/src/css/ed-grid.min.css"
+	rel="stylesheet">
+
+
 <!-- CSS Proyect Visual -->
 <link href="#" th:href="@{/css/visual-info.css}" rel="stylesheet" />
 <link href="#" th:href="@{/css/visual-scroll.css}" rel="stylesheet" />
@@ -30,9 +36,9 @@
 	href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap"
 	rel="stylesheet">
 
-<!-- EdGrid -->
-<link href="https://unpkg.com/ed-grid@3.0.0/src/css/ed-grid.min.css"
-	rel="stylesheet">
+<!-- Font Awesome -->
+<script src="https://kit.fontawesome.com/321d728be4.js"
+	crossorigin="anonymous"></script>
 </head>
 <body>
 	<div class="container">
@@ -52,9 +58,10 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item"><a class="nav-link" href="#"
-						th:href="@{/formularioReceta}">Nuevo <span class="sr-only">(current)</span>
+						th:href="@{/formularioReceta}">Nuevo <span class="sr-only ">(current)</span>
 					</a></li>
-					<li class="nav-item disabled"><a class="nav-link" href="#"> ... </a></li>
+					<li class="nav-item disabled"><a class="nav-link" href="#">
+							... </a></li>
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 						role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -65,11 +72,12 @@
 							<div class="dropdown-divider"></div>
 							<a class="dropdown-item" href="#">Something else here</a>
 						</div></li>
-					<li class="nav-item"><a class="nav-link " href="#"> ... </a>
-					</li>
+					<li class="nav-item"><a class="nav-link " href="#"> ... </a></li>
 				</ul>
-				<form class="form-inline my-2 my-lg-0" method="post" th:action="@{/nombre}" th:object="${busqueda}">
-					<input class="form-control mr-sm-2" type="search" th:field="*{recetaName}" th:value="${recetaName}"
+				<form class="form-inline my-2 my-lg-0" method="post"
+					th:action="@{/nombre}" th:object="${busqueda}">
+					<input class="form-control mr-sm-2" type="search"
+						th:field="*{recetaName}" th:value="${recetaName}"
 						placeholder="Search" aria-label="Search">
 					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 				</form>
@@ -80,17 +88,31 @@
 			<h1>Recetario</h1>
 		</div>
 
+		<div class="error" th:if="${#lists.isEmpty(listaRecetas)}">
+			<h5
+				th:text="'No existe ninguna receta que contenga el nombre ' + ${nombreBusqueda} + '...'"></h5>
+			<div class="s-ratio-16-9">
+				<img
+					src="https://cdn.pixabay.com/photo/2016/06/10/15/49/paprika-1448335_960_720.jpg" />
+			</div>
 
+		</div>
+		<div th:if="${not #lists.isEmpty(listaRecetas)}" class="infoList">
+			<h3
+				th:text="'Tenemos ' + ${listaRecetas.size()} + ' recetas en nuestro recetario.'"></h3>
+		</div>
 		<div class="ed-grid s-grid-1 m-grid-2 lg-grid-3 xl-grid-4">
-			<article class="s-shadow-bottom" th:each="receta : ${listaRecetas}"  >
+
+			<article class="s-shadow-bottom" th:each="receta : ${listaRecetas}">
 				<!--Contenedor de la imagen-->
-				<div class="s-ratio-16-9 img-container s-radius-tl s-radius-tr" >
+				<div class="s-ratio-16-9 img-container s-radius-tl s-radius-tr">
 					<img th:src="${receta.urlImg}"
 						src="https://ed.team/static/images/utils/og-image.jpg">
 				</div>
 				<!--Contenido-->
 				<div class="s-bg-white s-pxy-2">
-					<h3 th:text="${receta.nombre}" class="titlecard">Curso Bases de Datos Desde Cero</h3>
+					<h3 th:text="${receta.nombre}" class="titlecard">Curso Bases
+						de Datos Desde Cero</h3>
 					<p th:text="${receta.descripcion}" class="s-mb-0 infocard">Diseña,
 						estructura y administra bases de datos SQL y crea un sistema de
 						facturación</p>
@@ -100,7 +122,7 @@
 					<!--Define el ancho máximo de la imagen-->
 					<div class="s-10 s-mr-1">
 						<!--Contenedor de la imagen-->
-						<div class="circle ">
+						<div>
 							<img src="https://image.flaticon.com/icons/svg/709/709511.svg">
 						</div>
 						<!--Profesor-->
