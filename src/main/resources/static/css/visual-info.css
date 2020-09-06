@@ -73,3 +73,12 @@ h3 {
 .error>div{
 	text-align: center;
 }
+
+.titleform{
+	text-align: center;
+	border-bottom: 2px solid lightgrey;
+	border-top: 2px solid lightgrey;
+	padding: 30px;
+	color: gray;
+	margin-bottom: 40px;
+}

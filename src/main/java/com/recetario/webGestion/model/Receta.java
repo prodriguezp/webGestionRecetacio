@@ -28,7 +28,8 @@ import lombok.Setter;
 public class Receta {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@Column(name = "id_receta")
 	public long id;
 
 	public String descripcion;

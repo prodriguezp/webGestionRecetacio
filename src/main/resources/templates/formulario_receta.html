@@ -86,7 +86,10 @@
 			<form th:object="${receta}" action="#" th:action="@{/guardarReceta}"
 				method="post">
 
-				<h2>Receta</h2>
+				<div class="titleform">
+					<h2 th:text="'Editando -'+ ' ' +${receta.nombre}" th:if="${receta.nombre} != null"></h2>
+					<h2 th:if="${receta.nombre} == null">Creando una nueva receta</h2>
+				</div>
 				<!-- Input id hidden -->
 				<input th:field="*{id}" th:value="${id}" hidden>
 

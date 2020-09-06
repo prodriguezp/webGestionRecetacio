@@ -1,6 +1,7 @@
 package com.recetario.webGestion.model;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -18,7 +19,8 @@ import lombok.Setter;
 @Entity
 public class Ingrediente {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@Column(name = "id_ingrediente")
 	public long id;
 	
 	
