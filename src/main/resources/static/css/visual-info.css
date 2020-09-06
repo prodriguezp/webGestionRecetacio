@@ -5,13 +5,12 @@
 	margin-bottom: 30px;
 	border-bottom: 15px solid rgb(99, 67, 49);
 	border-top: 15px solid rgb(99, 67, 49);
-	color: rgb(99, 67, 49);
+	color: #f8caa0;
 	width: 100%;
-	height: 600px;
-	background-image: url('info-img.jpg');
+	background-image: url('../images/banners/info-img.jpg');
 	background-size: 100% 100%;
 	display: flex;
-	align-items: center;
+	align-items: flex-start;
 	justify-content: center;
 	font-family: 'Dancing Script', cursive;
 }
@@ -29,7 +28,7 @@
 }
 
 body {
-	background-image: url('vector.png');
+	background-image: url('../images/banners/vector.png');
 	background-size: 100% 100%;
 	background-attachment: fixed;
 }
@@ -65,16 +64,17 @@ h3 {
 	margin-bottom: 0px;
 }
 
-.error>div>img{
+.error>div>img {
 	-webkit-box-shadow: 4px 4px 25px 0px rgba(0, 0, 0, 0.62);
 	-moz-box-shadow: 4px 4px 25px 0px rgba(0, 0, 0, 0.62);
 	box-shadow: 4px 4px 25px 0px rgba(0, 0, 0, 0.62);
 }
-.error>div{
+
+.error>div {
 	text-align: center;
 }
 
-.titleform{
+.titleform {
 	text-align: center;
 	border-bottom: 2px solid lightgrey;
 	border-top: 2px solid lightgrey;
@@ -82,3 +82,45 @@ h3 {
 	color: gray;
 	margin-bottom: 40px;
 }
+
+.buttonForm {
+	background: white;
+	border: 1px solid green;
+	border-radius: 5px;
+	padding: 10px;
+	color: green;
+}
+
+.buttonForm:hover{
+    animation-name: buttonAn;
+  	animation-duration: 0.5s;
+  	color: white;
+  	animation-fill-mode: forwards;  
+}
+
+@keyframes buttonAn {
+  0%   {background-color: white;}
+  100% {background-color: green;}
+}
+
+
+.listItem{
+	border-top: 1px solid lightgrey;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+
+.listItem>div{
+	border-left: 1px solid lightgrey;
+	border-right: 1px solid lightgrey;
+	padding-left: 20px;
+	color: #139e33x;
+}	
+.listItem{
+	border-top: 1px solid lightgrey;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+}
+

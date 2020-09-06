@@ -38,9 +38,8 @@
 	<div class="container">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<a class="navbar-brand" href="#" th:href="@{/}"> <img
-				src="https://image.flaticon.com/icons/png/512/1021/1021460.png"
-				width="30" height="30" class="d-inline-block align-top" alt="">
-				Inicio
+				th:src="@{/images/svgs/cocinar.svg}" width="30" height="30"
+				class="d-inline-block align-top" alt=""> Inicio
 			</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarSupportedContent"
@@ -77,51 +76,71 @@
 				</form>
 			</div>
 		</nav>
-		<div class="info">
+		<div class="info s-radius-tl s-radius-tr s-ratio-16-9">
 			<h1>Ingredientes</h1>
 		</div>
 		<div>
 			<div class="titleform">
 				<h2 th:text="'Ingredientes de la receta '+ ${receta.nombre} "></h2>
 			</div>
-			
+
 			<div class="ed-grid s-grid-1">
 				<form th:object="${ingrediente}" action="#"
 					th:action="@{/guardarIngrediente/(id=${receta.id})}" method="post">
 					<div class="ed-grid s-grid-4">
-						<input th:field="*{id}" th:value="${id}" hidden type="text"
-							class="form-control"> <input th:field="*{nombre}"
-							th:value="${nombre}" type="text" class="form-control"> <input
-							th:field="*{cantidad}" th:value="${cantidad}" type="text"
-							class="form-control"> <select th:field="*{medida}"
-							class="form-control">
-							<option value="kg">KILOGRAMOS</option>
-							<option value="mg">MILIGRAMOS</option>
-							<option value="L">LITROS</option>
-							<option value="ml">MILILITROS</option>
-							<option value="gr">GRAMOS</option>
-							<option value="unidades">UNIDADES</option>
-							<option value="cucharada">CUCHARADA</option>
-						</select>
+
+						<div class="form-group" hidden>
+							<input th:field="*{id}" th:value="${id}" type="text"
+								class="form-control"> <small
+								class="form-text text-muted">Nombre de la receta</small>
+						</div>
+						<div class="form-group">
+							<input th:field="*{nombre}" th:value="${nombre}" type="text"
+								class="form-control"> <small
+								class="form-text text-muted">Nombre de la receta</small>
+						</div>
+						<div class="form-group">
+							<input th:field="*{cantidad}" th:value="${cantidad}"
+								type="number" class="form-control"> <small
+								class="form-text text-muted">Cantidad</small>
+						</div>
+						<div class="form-group">
+							<select th:field="*{medida}" class="form-control">
+								<option value="kg">KILOGRAMOS</option>
+								<option value="mg">MILIGRAMOS</option>
+								<option value="L">LITROS</option>
+								<option value="ml">MILILITROS</option>
+								<option value="gr">GRAMOS</option>
+								<option value="unidades">UNIDADES</option>
+								<option value="cucharada">CUCHARADA</option>
+							</select><small class="form-text text-muted">Medidas</small>
+						</div>
+
 
 						<div>
-							<button type="submit">Guardar</button>
+							<button type="submit" class="buttonForm">Guardar</button>
 						</div>
 					</div>
 				</form>
 
-				<div class="ed-grid s-grid-4"
+				<div class="ed-grid s-grid-5 listItem"
 					th:each="ing : ${receta.listaIngredientes}">
+
+					<div>
+						<img th:src="@{/images/svgs/icon-ingrediente.svg}" width="35px" />
+					</div>
 					<div th:text="${ing.nombre}"></div>
 					<div th:text="${ing.cantidad}"></div>
 					<div th:text="${ing.medida}"></div>
 					<div>
-						<button><a th:href="@{/borrarIngrediente/(id=${ing.id})}">Borrar</a></button>
+						<a th:href="@{/borrarIngrediente/(id=${ing.id})}"><button
+								class="buttonForm">Borrar</button></a>
 					</div>
+
 				</div>
 
 			</div>
-			
+
 
 
 		</div>
