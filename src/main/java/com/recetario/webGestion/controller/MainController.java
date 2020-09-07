@@ -1,5 +1,9 @@
 package com.recetario.webGestion.controller;
 
+import java.time.Instant;
+import java.time.LocalDate;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -11,9 +15,11 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.recetario.webGestion.model.Ingrediente;
+import com.recetario.webGestion.model.Pasos;
 import com.recetario.webGestion.model.Receta;
 import com.recetario.webGestion.model.RecetaBusqueda;
 import com.recetario.webGestion.repository.IIngredientesRepository;
+import com.recetario.webGestion.repository.IPasosRepository;
 import com.recetario.webGestion.repository.IRecetaRepository;
 
 @Controller()
@@ -24,6 +30,9 @@ public class MainController {
 	@Autowired
 	@Qualifier("ingredienteRepository")
 	IIngredientesRepository ingredientesRepo;
+	@Autowired
+	@Qualifier("pasosRepository")
+	IPasosRepository pasosRepo;
 
 	@GetMapping(value = { "/", "" })
 	public ModelAndView listadoRecetas() {
@@ -34,14 +43,25 @@ public class MainController {
 
 		return mav;
 	}
+
+	@GetMapping("/borrarReceta")
+	public String borrarReceta(@RequestParam(name = "id", required = true) Long id) {
+		Receta r = recetaRepo.findById(id).orElse(null);
+		// ingredientesRepo.deleteAll(r.getListaIngredientes());
+		recetaRepo.delete(r);
+
+		return "redirect:/";
+	}
+
 	@PostMapping("/nombre")
-	public ModelAndView busquedaPorNombre(@ModelAttribute(name = "busqueda")RecetaBusqueda busqueda) {
+	public ModelAndView busquedaPorNombre(@ModelAttribute(name = "busqueda") RecetaBusqueda busqueda) {
 		ModelAndView mav = new ModelAndView("index");
 		mav.addObject("listaRecetas", recetaRepo.findAllByNombre(busqueda.getRecetaName()));
 		mav.addObject("busqueda", new RecetaBusqueda());
 		mav.addObject("nombreBusqueda", busqueda.getRecetaName());
 		return mav;
 	}
+
 	@GetMapping("/formularioReceta")
 	public ModelAndView formularioReceta(@RequestParam(name = "id", required = false) Long id) {
 		ModelAndView mav = new ModelAndView("formulario_receta");
@@ -111,4 +131,35 @@ public class MainController {
 		return mav;
 	}
 
+	@GetMapping("/pasos")
+	public ModelAndView pasos(@RequestParam(name = "id", required = true) long id) {
+		ModelAndView mav = new ModelAndView("formulario_pasos");
+
+		mav.addObject("paso", new Pasos());
+		mav.addObject("receta", recetaRepo.findById(id).orElse(null));
+		mav.addObject("busqueda", new RecetaBusqueda());
+		return mav;
+	}
+
+	@PostMapping("/guardarPasos")
+	public ModelAndView guardarPasos(@RequestParam(name = "id", required = true) long id,
+			@ModelAttribute(name = "paso") Pasos paso) {
+		ModelAndView mav = new ModelAndView("formulario_pasos");
+
+		Receta receta = recetaRepo.findById(id).orElse(null);
+		paso.setReceta(receta);
+		pasosRepo.save(paso);
+		mav.addObject("paso", new Pasos());
+		mav.addObject("receta", receta);
+		mav.addObject("busqueda", new RecetaBusqueda());
+
+		return mav;
+	}
+
+	private int generarCodeDate() {
+		LocalDate localDate = LocalDate.now();
+		Date hora = Date.from(Instant.now());
+		return Integer.valueOf(String.valueOf(localDate.getYear() + localDate.getMonthValue()
+				+ localDate.getDayOfMonth() + hora.getDay() + hora.getHours() + hora.getMinutes()));
+	}
 }

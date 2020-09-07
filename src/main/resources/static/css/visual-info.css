@@ -7,7 +7,7 @@
 	border-top: 15px solid rgb(99, 67, 49);
 	color: #f8caa0;
 	width: 100%;
-	background-image: url('../images/banners/info-img.jpg');
+	background-image: url('../images/banners/imagen-info.jpg');
 	background-size: 100% 100%;
 	display: flex;
 	align-items: flex-start;
@@ -85,10 +85,11 @@ h3 {
 
 .buttonForm {
 	background: white;
-	border: 1px solid green;
+	border: 1px solid  #301e14;
 	border-radius: 5px;
 	padding: 10px;
-	color: green;
+	color:  #301e14;
+	width: 100%;
 }
 
 .buttonForm:hover{
@@ -100,7 +101,7 @@ h3 {
 
 @keyframes buttonAn {
   0%   {background-color: white;}
-  100% {background-color: green;}
+  100% {background-color:  #301e14;}
 }
 
 
@@ -116,11 +117,39 @@ h3 {
 	border-right: 1px solid lightgrey;
 	padding-left: 20px;
 	color: #139e33x;
+	
 }	
 .listItem{
 	border-top: 1px solid lightgrey;
 	padding-top: 10px;
 	padding-bottom: 10px;
 }
+.borrarBtn{
+	margin-top: 10px;
+	width: 100%;	
+	background: #d1343f;
+	text-align: center;
+}
+.borrarBtn:hover{
+	background: #a30d17;
+}
 
 
+.paso {
+	border-top: gray 1px solid;
+	padding: 30px;
+	text-align: center;
+			
+}
+.paso>h4{
+	color: brown;
+	font-family: cursive;
+}
+.paso>div{
+	margin-bottom: 40px;
+}
+.paso:hover{
+	background-color: #a2704124;
+	color: black;
+	color:black;
+}

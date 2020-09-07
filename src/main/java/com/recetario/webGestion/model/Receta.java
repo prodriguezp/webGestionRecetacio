@@ -28,25 +28,31 @@ import lombok.Setter;
 public class Receta {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id_receta")
 	public long id;
 
+	@Column(columnDefinition = "LONGTEXT")
 	public String descripcion;
 	public String nombre;
+	
+	@Column(columnDefinition = "LONGTEXT")
 	public String urlImg;
 	public int tiempoPreparacion;
 	public int raciones;
 
 	@OneToMany(mappedBy = "receta", cascade = CascadeType.ALL, orphanRemoval = true)
 	public List<Ingrediente> listaIngredientes = new ArrayList<Ingrediente>();
+	
+	@OneToMany(mappedBy = "receta", cascade = CascadeType.ALL, orphanRemoval = true)
+	public List<Pasos> listaPasos= new ArrayList<Pasos>();
 
 	public Receta() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public Receta(long id, String descripcion, String nombre, String urlImg, int tiempoPreparacion, int raciones,
-			List<Ingrediente> listaIngredientes) {
+			List<Ingrediente> listaIngredientes,List<Pasos> listaPasos) {
 		super();
 		this.id = id;
 		this.descripcion = descripcion;
@@ -55,6 +61,7 @@ public class Receta {
 		this.tiempoPreparacion = tiempoPreparacion;
 		this.raciones = raciones;
 		this.listaIngredientes = listaIngredientes;
+		this.listaPasos= listaPasos;
 	}
 
 	public List<Ingrediente> getListaIngredientes() {
@@ -111,6 +118,12 @@ public class Receta {
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+	public List<Pasos> getListaPasos() {
+		return listaPasos;
+	}
+	public void setListaPasos(List<Pasos> listaPasos) {
+		this.listaPasos = listaPasos;
 	}
 
 	

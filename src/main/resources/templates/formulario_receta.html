@@ -136,10 +136,22 @@
 						th:field="*{listaIngredientes[__${i.index}__].receta.id}"
 						th:value="${ingre.receta.id}">
 				</div>
-
-
+				<div th:each="paso, i : ${receta.listaPasos}" hidden>
+					<input type="text"
+						th:field="*{listaPasos[__${i.index}__].id}"
+						th:value="${paso.id}"> 
+					<input type="text"
+						th:field="*{listaPasos[__${i.index}__].descripcion}"
+						th:value="${paso.descripcion}"> 
+					<input type="text"
+						th:field="*{listaPasos[__${i.index}__].receta.id}"
+						th:value="${paso.receta.id}"> 
+				</div>
 				<button type="submit" class="btn btn-primary">Ingredientes</button>
+
+
 			</form>
+			
 		</div>
 
 

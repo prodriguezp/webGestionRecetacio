@@ -19,7 +19,7 @@ import lombok.Setter;
 @Entity
 public class Ingrediente {
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id_ingrediente")
 	public long id;
 	
@@ -29,7 +29,7 @@ public class Ingrediente {
 	public String medida;
 	
 	@ManyToOne()
-    @JoinColumn(name = "fk_receta")
+    @JoinColumn(name = "fk_receta_ingrediente")
 	public Receta receta;
 	
 	
