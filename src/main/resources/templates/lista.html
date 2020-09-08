@@ -43,7 +43,7 @@
 <body>
 	<div class="container">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<a class="navbar-brand" href="#" th:href="@{/}"> <img
+			<a class="navbar-brand" href="#" th:href="@{/admin/menu}"> <img
 				th:src="@{/images/svgs/cocinar.svg}"
 				width="30" height="30" class="d-inline-block align-top" alt="">
 				Inicio
@@ -58,7 +58,7 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item"><a class="nav-link" href="#"
-						th:href="@{/formularioReceta}">Nuevo <span class="sr-only ">(current)</span>
+						th:href="@{/admin/formularioReceta}">Nuevo <span class="sr-only ">(current)</span>
 					</a></li>
 					<li class="nav-item disabled"><a class="nav-link" href="#">
 							... </a></li>
@@ -75,7 +75,7 @@
 					<li class="nav-item"><a class="nav-link " href="#"> ... </a></li>
 				</ul>
 				<form class="form-inline my-2 my-lg-0" method="post"
-					th:action="@{/nombre}" th:object="${busqueda}">
+					th:action="@{/admin/nombre}" th:object="${busqueda}">
 					<input class="form-control mr-sm-2" type="search"
 						th:field="*{recetaName}" th:value="${recetaName}"
 						placeholder="Search" aria-label="Search">
@@ -129,12 +129,12 @@
 					<p class="s-mb-0" th:text="${receta.tiempoPreparacion}+' min.'">Prof.
 						Alexys Lozada</p>
 					<!--Boton-->
-					<a th:href="@{/formularioReceta/(id=${receta.id})}"
+					<a th:href="@{/admin/formularioReceta/(id=${receta.id})}"
 						class="button s-to-right">
 						<div>Editar</div>
 					</a>
 					
-					<a th:href="@{/borrarReceta/(id=${receta.id})}"
+					<a th:href="@{/admin/borrarReceta/(id=${receta.id})}"
 						class="button s-to-left borrarBtn">
 						<div>Borrar</div>
 					</a>

@@ -37,7 +37,7 @@
 <body>
 	<div class="container">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<a class="navbar-brand" href="#" th:href="@{/}"> <img
+			<a class="navbar-brand" href="#" th:href="@{/admin/menu}"> <img
 				th:src="@{/images/svgs/cocinar.svg}" width="30" height="30"
 				class="d-inline-block align-top" alt=""> Inicio
 			</a>
@@ -51,7 +51,7 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item"><a class="nav-link" href="#"
-						th:href="@{/formularioReceta}">Nuevo <span class="sr-only">(current)</span>
+						th:href="@{/admin/formularioReceta}">Nuevo <span class="sr-only">(current)</span>
 					</a></li>
 					<li class="nav-item disabled"><a class="nav-link" href="#">
 							... </a></li>
@@ -68,7 +68,7 @@
 					<li class="nav-item"><a class="nav-link " href="#"> ... </a></li>
 				</ul>
 				<form class="form-inline my-2 my-lg-0" method="post"
-					th:action="@{/nombre}" th:object="${busqueda}">
+					th:action="@{/admin/nombre}" th:object="${busqueda}">
 					<input class="form-control mr-sm-2" type="search"
 						th:field="*{recetaName}" th:value="${recetaName}"
 						placeholder="Search" aria-label="Search">
@@ -84,11 +84,11 @@
 				<h2 th:text="'Ingredientes de la receta '+ ${receta.nombre} "></h2>
 			</div>
 			<div>
-				<a th:href="@{/pasos/(id=${receta.id})}"><button class="buttonForm">Pasos</button></a>
+				<a th:href="@{/admin/pasos/(id=${receta.id})}"><button class="buttonForm">Pasos</button></a>
 			</div>
 			<div class="ed-grid s-grid-1">
 				<form th:object="${ingrediente}" action="#"
-					th:action="@{/guardarIngrediente/(id=${receta.id})}" method="post">
+					th:action="@{/admin/guardarIngrediente/(id=${receta.id})}" method="post">
 					<div class="ed-grid s-grid-4">
 
 						<div class="form-group" hidden>
@@ -131,7 +131,7 @@
 					<div th:text="${ing.cantidad}"></div>
 					<div th:text="${ing.medida}"></div>
 					<div>
-						<a th:href="@{/borrarIngrediente/(id=${ing.id})}"><button
+						<a th:href="@{/admin/borrarIngrediente/(id=${ing.id})}"><button
 								class="buttonForm">Borrar</button></a>
 					</div>
 

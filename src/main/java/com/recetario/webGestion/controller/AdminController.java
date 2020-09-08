@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
@@ -23,7 +24,9 @@ import com.recetario.webGestion.repository.IPasosRepository;
 import com.recetario.webGestion.repository.IRecetaRepository;
 
 @Controller()
-public class MainController {
+@RequestMapping("/admin")
+
+public class AdminController {
 	@Autowired
 	@Qualifier("recetaRepository")
 	IRecetaRepository recetaRepo;
@@ -34,9 +37,9 @@ public class MainController {
 	@Qualifier("pasosRepository")
 	IPasosRepository pasosRepo;
 
-	@GetMapping(value = { "/", "" })
+	@GetMapping("/menu")
 	public ModelAndView listadoRecetas() {
-		ModelAndView mav = new ModelAndView("index");
+		ModelAndView mav = new ModelAndView("lista");
 
 		mav.addObject("listaRecetas", recetaRepo.findAll());
 		mav.addObject("busqueda", new RecetaBusqueda());
@@ -50,12 +53,12 @@ public class MainController {
 		// ingredientesRepo.deleteAll(r.getListaIngredientes());
 		recetaRepo.delete(r);
 
-		return "redirect:/";
+		return "redirect:/admin/menu";
 	}
 
 	@PostMapping("/nombre")
 	public ModelAndView busquedaPorNombre(@ModelAttribute(name = "busqueda") RecetaBusqueda busqueda) {
-		ModelAndView mav = new ModelAndView("index");
+		ModelAndView mav = new ModelAndView("lista");
 		mav.addObject("listaRecetas", recetaRepo.findAllByNombre(busqueda.getRecetaName()));
 		mav.addObject("busqueda", new RecetaBusqueda());
 		mav.addObject("nombreBusqueda", busqueda.getRecetaName());
